@@ -25,7 +25,7 @@ jobs:
         docker images        
     - name: Deploy to minikube
       run:
-        sed -i 's/latest/$TAG/g' deploy-to-minikube.yaml
+        sed -i '' 's/latest/$TAG/g' deploy-to-minikube.yaml
         echo "tag updated"
         kubectl apply -f deploy-to-minikube.yaml
     - name: Test service URLs
