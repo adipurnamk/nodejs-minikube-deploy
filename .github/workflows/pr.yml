@@ -19,7 +19,7 @@ jobs:
         export SHELL=/bin/bash
         TAG=$(date +'%Y-%m-%d_%H-%M-%S')
         echo "image tag is" $TAG
-        eval $(minikube -p minikube docker-env)
+        # eval $(minikube -p minikube docker-env)
         docker build -f ./Dockerfile -t local/example:$TAG .
         echo -n "verifying images:"
         docker images
