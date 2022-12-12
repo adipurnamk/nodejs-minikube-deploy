@@ -22,10 +22,12 @@ jobs:
         eval $(minikube -p minikube docker-env)
         docker build -f ./Dockerfile -t local/example:$TAG .
         echo -n "verifying images:"
-        docker images        
+        docker images
+    - name: Change image tag
+      run:
+        sed -i'' -e 's/latest/$TAG/g' deploy-to-minikube.yaml        
     - name: Deploy to minikube
       run:
-        sed -i'' -e 's/latest/$TAG/g' deploy-to-minikube.yaml
         echo "tag updated"
         kubectl apply -f deploy-to-minikube.yaml
     - name: Test service URLs
