@@ -28,7 +28,6 @@ jobs:
         sed -i.bak 's/latest/$TAG/' deploy-to-minikube.yaml        
     - name: Deploy to minikube
       run:
-        echo "tag updated"
         kubectl apply -f deploy-to-minikube.yaml
     - name: Test service URLs
       run: |
