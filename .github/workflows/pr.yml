@@ -25,7 +25,7 @@ jobs:
         docker images
     - name: Change image tag
       run:
-        sed -i'' -e 's/latest/$TAG/g' deploy-to-minikube.yaml        
+        sed -i.bak 's/latest/$TAG/' deploy-to-minikube.yaml        
     - name: Deploy to minikube
       run:
         echo "tag updated"
