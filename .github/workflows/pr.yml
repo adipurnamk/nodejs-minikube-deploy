@@ -16,7 +16,7 @@ jobs:
       run: kubectl get pods -A
     - name: Build image
       run: |
-        # export SHELL=/bin/bash
+        export SHELL=/bin/bash
         TAG=$(date +'%Y-%m-%d_%H-%M-%S')
         echo "image tag is" $TAG
         eval $(minikube -p minikube docker-env)
