@@ -16,12 +16,7 @@ jobs:
     #   run: kubectl get pods -A
     - name: Build image
       run: |
-        export SHELL=/bin/bash
-        TAG=v1
-        echo "image tag is" $TAG
-        # eval $(minikube -p minikube docker-env)
-        docker build -f ./Dockerfile -t local/example:$TAG .
-        echo -n "verifying images:"
+        docker build -f ./Dockerfile -t local/example:v1 .
         docker images
     - name: Change image tag
       run:
