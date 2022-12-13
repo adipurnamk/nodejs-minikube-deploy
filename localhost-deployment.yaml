@@ -15,7 +15,7 @@ spec:
             containers:
                 - name: example-api
                   imagePullPolicy: Never
-                  image: local/example:v1
+                  image: local/example:$(git rev-parse --short HEAD)
                   resources:
                       limits:
                           cpu: 50m
