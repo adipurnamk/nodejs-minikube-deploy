@@ -16,6 +16,7 @@ jobs:
     #   run: kubectl get pods -A
     - name: Build image
       run: |
+        echo $(git rev-parse --short HEAD)
         docker build -f ./Dockerfile -t local/example:$(git rev-parse --short HEAD) .
         docker images
     - name: Change image tag
