@@ -7,7 +7,7 @@ on:
 jobs:
   job1:
     runs-on: self-hosted
-    name: build example and deploy to minikube
+    name: build example and deploy to localhost
     steps:
     - uses: actions/checkout@v2
     # - name: Start minikube
@@ -18,16 +18,17 @@ jobs:
       run: |
         docker build -f ./Dockerfile -t local/example:v1 .
         docker images
-    - name: Change image tag
+    # - name: Change image tag
+    #   run:
+    #     sed -i.bak 's/latest/$TAG/' deploy-to-minikube.yaml        
+    - name: Deploy to local kubernetes
       run:
-        sed -i.bak 's/latest/$TAG/' deploy-to-minikube.yaml        
-    - name: Deploy to minikube
-      run:
-        kubectl apply -f deploy-to-minikube.yaml
+        kubectl apply -f localhost-deployment.yaml
     - name: Test service URLs
       run: |
         kubectl get pods -A
         kubectl get services
+        curl http://localhost:31001
         # minikube service list
         # minikube service example --url &
         # minikube service example
