@@ -32,6 +32,7 @@ jobs:
     - name: Test service URLs
       run: |
         kubectl get pods -A
+        kubectl get services
         # minikube service list
         # minikube service example --url &
         # minikube service example
