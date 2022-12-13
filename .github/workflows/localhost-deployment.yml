@@ -18,9 +18,9 @@ jobs:
       run: |
         docker build -f ./Dockerfile -t local/example:$(git rev-parse --short HEAD) .
         docker images
-    # - name: Change image tag
-    #   run:
-    #     sed -i.bak 's/latest/$TAG/' deploy-to-minikube.yaml        
+    - name: Change image tag
+      run:
+        sed -i.bak 's/latest/$(git rev-parse --short HEAD)/' localhost-deployment.yaml       
     - name: Deploy to local kubernetes
       run:
         kubectl apply -f localhost-deployment.yaml
