@@ -15,7 +15,7 @@ spec:
             containers:
                 - name: example-api
                   imagePullPolicy: Never
-                  image: local/example:latest
+                  image: local/example:v1
                   resources:
                       limits:
                           cpu: 50m
@@ -36,4 +36,4 @@ spec:
         app: example
     ports:
         - port: 8080
-          targetPort: 3000
+          targetPort: 1337

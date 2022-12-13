@@ -13,7 +13,7 @@ COPY . /usr/src/app/
 RUN npm install --production
 
 # Define the network ports that this container will listen to at runtime.
-EXPOSE 3000
+EXPOSE 1337
 
 # Configure the container to be run as an executable (entry point).
 ENTRYPOINT ["npm", "start"]
